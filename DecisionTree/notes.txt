@@ -1,0 +1,46 @@
+Decision Trees
+
+- Start with root node, has all data points
+
+- Begin splitting the root node into categories/labels etc.
+    - What neighborhood? East or West
+    - Number of rooms: less than or more than 5?
+
+- Branches - Answer based on splitting decision 
+    - East Neighborhood is branch to what neighborhood: East or West
+- Leaf - Terminal/End Node
+    - You can not split this node into any further categories
+
+Decisions needed:
+    - Split feature
+    - Split points
+    - When to stop splitting
+        - End goal is to achieve pure leaf nodes to categorize data through decisions
+
+Steps: 
+- Training:
+    - Calculate information gain with each possible split
+        - Want to maximize information gain
+    - Divide set with that feature & value that gives most information gain
+    - Divide tree and do same for all created branches
+        - UNTIL stopping critera is reached!
+
+- Testing
+    - Given a data point:
+        - Follow the tree until you reach leaf node
+        - Return most common class label in leaf node
+            - Leaf nodes necessarily dont have to be pure 
+
+- Entropy: Lack of Order
+    - Your root node has the highest Entropy and your leaf nodes have the least
+        - Because leaf nodes are nice and ordered
+
+    - IG (Information Gain) = E(Parent) - [weighted average] - E(children)
+        - E is for Entropy
+    - Entropy E = - sum p(X)*log2(p(X))
+        - p(X) = #x/n -> number of times a class occured in a node divided by number of total nodes
+
+    - Stopping Critera: Max depth, Min number of samples, min impurity decrease 
+        - Min # of Samples a node can have - if less than stop dividing node
+        - Min impurity Decrease - Min entropy change for a split to happen
+        
